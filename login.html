@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - To-Do App</title>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="app-card login-container">
+        <header>
+          <h1>To‑Do App</h1>
+        </header>
+
+        <p class="muted">Sign in to manage your tasks</p>
+
+        <form id="login-form" action="/login" method="POST" novalidate>
+          <label for="username" class="muted">Username</label>
+          <input id="username" name="username" type="text" placeholder="Username" required />
+
+          <label for="password" class="muted">Password</label>
+          <input id="password" name="password" type="password" placeholder="Password" required />
+
+          <button id="login-btn" type="submit">Sign in</button>
+        </form>
+
+        <p class="muted" style="margin-top:12px">Demo credentials — username: <strong>admin</strong>, password: <strong>password</strong></p>
+
+        <div id="login-error" class="muted" style="color:var(--danger);display:none;margin-top:8px"></div>
+      </div>
+    </div>
+
+    <script>
+      // Optional client-side enhancement: prevent double submit and show simple validation
+      (function () {
+        const form = document.getElementById('login-form');
+        const btn = document.getElementById('login-btn');
+        const err = document.getElementById('login-error');
+
+        if (!form) return;
+
+        form.addEventListener('submit', function (e) {
+          // basic client-side validation
+          const user = document.getElementById('username').value.trim();
+          const pass = document.getElementById('password').value.trim();
+          if (!user || !pass) {
+            e.preventDefault();
+            err.textContent = 'Please enter username and password.';
+            err.style.display = 'block';
+            return;
+          }
+
+          // disable button to avoid double submit
+          btn.disabled = true;
+          btn.textContent = 'Signing in...';
+
+          // Let the normal form submit proceed (server handles authentication).
+          // If you prefer AJAX login, we can switch to fetch() and handle redirects manually.
+        });
+      })();
+    </script>
+  </body>
+</html>

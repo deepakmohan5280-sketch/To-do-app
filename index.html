@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>To-Do App</title>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="app-card">
+        <header>
+          <h1>My To‑Do List</h1>
+          <button id="logout" aria-label="Logout">Logout</button>
+        </header>
+
+        <p class="muted">Add tasks, remove completed items, and manage your day.</p>
+
+        <div id="add-task">
+          <input id="new-task" type="text" placeholder="Add a new task" aria-label="New task" />
+          <button id="add-btn">Add Task</button>
+        </div>
+
+        <ul id="task-list" aria-live="polite"></ul>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
